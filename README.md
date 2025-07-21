@@ -1,5 +1,9 @@
 # Desafio Técnico - Agente de Previsão de Evasão Escolar
 
+
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/2cc00345-bfb9-426d-afa4-4b32f46b0016" />
+
+
 ## Objetivo do Projeto
 
 Este projeto tem como objetivo desenvolver um agente de inteligência artificial (IA) capaz de prever o risco de evasão escolar de alunos, utilizando dados públicos do Ministério da Educação (MEC) e um modelo de Machine Learning clássico. O desenvolvimento segue os princípios do Google Agent Development Kit (ADK), embora a integração final com o framework ADK seja conceitual e demonstrada através de uma função de predição isolada.
