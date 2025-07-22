@@ -111,7 +111,7 @@ A saída indicará quantos testes foram coletados e se passaram ou falharam. Um 
 Resultados do Modelo (Execução de analise_evasao.py)
 Aqui está uma ilustração que representa a ideia do projeto:
 
-<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/46b64755-f746-45e7-a04c-75832d97d03a" />
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/fcf5b4f6-639b-4e30-a8ab-e37270ee8548" />
 
 Métricas de Avaliação
 Após o treinamento, o modelo Random Forest alcançou as seguintes métricas no conjunto de teste:
