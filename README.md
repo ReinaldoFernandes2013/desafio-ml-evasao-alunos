@@ -73,10 +73,9 @@ No terminal (com o ambiente virtual ativado), execute:
 
 ```bash
 python analise_evasao.py
+```
 
-
-
-## Aguarde a conclusão da execução. Você verá mensagens de progresso e a confirmação de que os modelos foram salvos.
+ Aguarde a conclusão da execução. Você verá mensagens de progresso e a confirmação de que os modelos foram salvos.
 
 2. Testar a Função de Previsão (Executar agente_evasao.py)
 Este script carregará o modelo e o encoder salvos e usará a função predict_evasao_status com dados de exemplo para demonstrar a previsão de evasão.
