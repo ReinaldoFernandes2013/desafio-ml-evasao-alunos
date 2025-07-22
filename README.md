@@ -1,9 +1,5 @@
 # Desafio Técnico - Agente de Previsão de Evasão Escolar
 
-
-<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/2cc00345-bfb9-426d-afa4-4b32f46b0016" />
-
-
 ## Objetivo do Projeto
 
 Este projeto tem como objetivo desenvolver um agente de inteligência artificial (IA) capaz de prever o risco de evasão escolar de alunos, utilizando dados públicos do Ministério da Educação (MEC) e um modelo de Machine Learning clássico. O desenvolvimento segue os princípios do Google Agent Development Kit (ADK), embora a integração final com o framework ADK seja conceitual e demonstrada através de uma função de predição isolada.
@@ -33,6 +29,7 @@ O projeto é composto pelos seguintes arquivos principais:
 - `onehot_encoder.joblib`: O arquivo do OneHotEncoder treinado. (Gerado após a execução de `analise_evasao.py`)
 - `README.md`: Este arquivo, contendo a documentação do projeto.
 - `requirements.txt`: Lista todas as bibliotecas Python e suas versões exatas necessárias para o projeto, permitindo uma instalação fácil e reproduzível.
+- `web_scraper.py`: Um script Python adicional que demonstra a capacidade de coletar dinamicamente links para novos datasets de educação do Portal de Dados Abertos do MEC.
 
 ## Pré-requisitos
 
@@ -58,6 +55,7 @@ Antes de executar os scripts, certifique-se de ter o Python instalado (versão 3
     ```bash
     pip install -r requirements.txt
     ```
+    **Nota**: Para a funcionalidade de Web Scraping, certifique-se de que `requests` e `beautifulsoup4` estejam instalados. Eles geralmente já são incluídos pelas dependências principais, mas caso contrário: `pip install requests beautifulsoup4`.
 
 ## Como Executar
 
@@ -77,7 +75,7 @@ python analise_evasao.py
 Aguarde a conclusão da execução. Você verá mensagens de progresso e a confirmação de que os modelos foram salvos.
 
 2. Testar a Função de Previsão (Executar agente_evasao.py)
-Este script carregará o modelo e o encoder salvos e usará a função predict_evasion_status com dados de exemplo para demonstrar a previsão de evasão.
+Este script carregará o modelo e o encoder salvos e usará a função predict_evasao_status com dados de exemplo para demonstrar a previsão de evasão.
 
 No terminal (com o ambiente virtual ativado), execute:
 
@@ -86,7 +84,22 @@ Bash
 python agente_evasao.py
 A saída mostrará as previsões para os alunos de teste. Você pode ignorar qualquer UserWarning relacionada a "X does not have valid feature names", pois ela é esperada devido à forma como os dados são passados ao modelo para contornar um problema de validação.
 
+Web Scraping para Coleta de Dados
+Um componente adicional do projeto é o script web_scraper.py, que demonstra a capacidade de coletar informações diretamente de portais web para identificar novos datasets.
+
+Como Executar o Web Scraper
+No terminal (com o ambiente virtual ativado), execute:
+
+Bash
+
+python web_scraper.py
+Este script acessará o Portal de Dados Abertos do MEC, buscará links relevantes para dados de educação e imprimirá as URLs encontradas. Isso ilustra como um agente poderia proativamente buscar e integrar novas fontes de dados.
+
 Resultados do Modelo (Execução de analise_evasao.py)
+Aqui está uma ilustração que representa a ideia do projeto:
+
+![alt text](image.png)
+
 Métricas de Avaliação
 Após o treinamento, o modelo Random Forest alcançou as seguintes métricas no conjunto de teste:
 
@@ -104,5 +117,29 @@ macro avg       0.68      0.68      0.68     74808
 weighted avg       0.68      0.68      0.68     74808
 ```
 
-Aguarde a conclusão da execução. Você verá mensagens de progresso e a confirmação de que os modelos foram salvos.
+## Matriz de Confusão:
 
+[[25013 13075]
+ [11109 25611]]
+
+
+## Interpretação
+
+A acurácia de ~67.7% indica que o modelo classifica corretamente se um aluno irá evadir ou não em mais de dois terços dos casos. As métricas de precisão e recall para ambas as classes (0: Não Evasão, 1: Evasão) são balanceadas, sugerindo que o modelo tem um desempenho razoável na identificação tanto de alunos que evadem quanto dos que não evadem. Isso o torna um ponto de partida promissor para intervenções.
+
+Conceito de Agente ADK
+A função predict_evasion_status no agente_evasao.py serve como a "ferramenta" central que um agente construído com o Google Agent Development Kit (ADK) utilizaria. Dentro de um framework ADK, esta função seria exposta e o agente, baseado em suas instruções ou no contexto de uma conversa, decidiria quando chamar essa ferramenta para obter uma previsão de evasão.
+
+Por exemplo, um agente ADK poderia:
+
+Receber uma pergunta: "Qual o risco de evasão do aluno João Silva com carga horária X, tipo de curso Y, etc.?"
+
+Extrair as informações relevantes da pergunta.
+
+Chamar a ferramenta predict_evasion_status (passando os dados do aluno como argumentos).
+
+Receber a resposta ("Alto risco de evasão.").
+
+Formular uma resposta amigável para o usuário.
+
+Esta abordagem modular permite que o modelo de ML seja facilmente integrado a sistemas de agentes mais complexos e inteligentes, aproveitando a flexibilidade do ADK para orquestrar diversas ferramentas e capacidades de IA.

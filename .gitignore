@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.env
+*.bak
+*.tmp
+
+# Ambientes Virtuais
+env_desafio/  # A pasta específica do seu ambiente virtual
+
+# Modelos e Encoders Salvos (Opcional - remova a # se quiser ignorá-los)
+# modelo_evasao.joblib
+# onehot_encoder.joblib
+
+# Logs
+*.log
+log/
+
+# Dados (Opcional - se você gerar dados processados intermediários)
+*.csv.processed
+*.parquet
+
+# Caches e arquivos de IDE (Visual Studio Code)
+.vscode/
+.history/
+*.code-workspace
