@@ -79,9 +79,10 @@ Este script carregará o modelo e o encoder salvos e usará a função predict_e
 
 No terminal (com o ambiente virtual ativado), execute:
 
-Bash
-
+```bash
 python agente_evasao.py
+ ```
+
 A saída mostrará as previsões para os alunos de teste. Você pode ignorar qualquer UserWarning relacionada a "X does not have valid feature names", pois ela é esperada devido à forma como os dados são passados ao modelo para contornar um problema de validação.
 
 Web Scraping para Coleta de Dados
@@ -90,15 +91,17 @@ Um componente adicional do projeto é o script web_scraper.py, que demonstra a c
 Como Executar o Web Scraper
 No terminal (com o ambiente virtual ativado), execute:
 
-Bash
-
+```bash
 python web_scraper.py
+ ```
+
 Este script acessará o Portal de Dados Abertos do MEC, buscará links relevantes para dados de educação e imprimirá as URLs encontradas. Isso ilustra como um agente poderia proativamente buscar e integrar novas fontes de dados.
 
 Resultados do Modelo (Execução de analise_evasao.py)
 Aqui está uma ilustração que representa a ideia do projeto:
 
-![alt text](image.png)
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/ab47d0be-79cb-4b95-b6a8-aa8bc39ce6fb" />
+
 
 Métricas de Avaliação
 Após o treinamento, o modelo Random Forest alcançou as seguintes métricas no conjunto de teste:
@@ -117,14 +120,11 @@ macro avg       0.68      0.68      0.68     74808
 weighted avg       0.68      0.68      0.68     74808
 ```
 
-## Matriz de Confusão:
+Matriz de Confusão:
 
 [[25013 13075]
  [11109 25611]]
-
-
-## Interpretação
-
+Interpretação
 A acurácia de ~67.7% indica que o modelo classifica corretamente se um aluno irá evadir ou não em mais de dois terços dos casos. As métricas de precisão e recall para ambas as classes (0: Não Evasão, 1: Evasão) são balanceadas, sugerindo que o modelo tem um desempenho razoável na identificação tanto de alunos que evadem quanto dos que não evadem. Isso o torna um ponto de partida promissor para intervenções.
 
 Conceito de Agente ADK
