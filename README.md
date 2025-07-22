@@ -4,7 +4,7 @@
 
 Este projeto tem como objetivo desenvolver um agente de inteligência artificial (IA) capaz de prever o risco de evasão escolar de alunos, utilizando dados públicos do Ministério da Educação (MEC) e um modelo de Machine Learning clássico. O desenvolvimento segue os princípios do Google Agent Development Kit (ADK), embora a integração final com o framework ADK seja conceitual e demonstrada através de uma função de predição isolada.
 
-## Tema
+## Tema Escolhido
 
 Educação: Previsão de Evasão Escolar.
 
@@ -30,7 +30,7 @@ O projeto é composto pelos seguintes arquivos principais:
 - `README.md`: Este arquivo, contendo a documentação do projeto.
 - `requirements.txt`: Lista todas as bibliotecas Python e suas versões exatas necessárias para o projeto, permitindo uma instalação fácil e reproduzível.
 - `web_scraper.py`: Um script Python adicional que demonstra a capacidade de coletar dinamicamente links para novos datasets de educação do Portal de Dados Abertos do MEC.
-- **`tests/`**: Pasta contendo os testes unitários do projeto, desenvolvidos com `pytest`, para garantir a funcionalidade e a consistência da lógica de previsão.
+- `tests/`: Pasta contendo os testes unitários do projeto, desenvolvidos com `pytest`, para garantir a funcionalidade e a consistência da lógica de previsão.
   - `tests/test_agente_evasao.py`: Contém os testes específicos para a função `predict_evasion_status` em `agente_evasao.py`.
 
 ## Pré-requisitos
@@ -84,8 +84,6 @@ No terminal (com o ambiente virtual ativado), execute:
 Bash
 
 python agente_evasao.py
-
-
 A saída mostrará as previsões para os alunos de teste. Você pode ignorar qualquer UserWarning relacionada a "X does not have valid feature names", pois ela é esperada devido à forma como os dados são passados ao modelo para contornar um problema de validação.
 
 Web Scraping para Coleta de Dados
@@ -112,7 +110,47 @@ A saída indicará quantos testes foram coletados e se passaram ou falharam. Um 
 
 Resultados do Modelo (Execução de analise_evasao.py)
 Aqui está uma ilustração que representa a ideia do projeto:
+!
 
-<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/9b09e2ec-0ae5-48ae-8dba-7daa2566cf1c" />
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/a3913e03-3269-42db-b317-a802c48b1093" />
 
+Métricas de Avaliação
+Após o treinamento, o modelo Random Forest alcançou as seguintes métricas no conjunto de teste:
 
+Acurácia (Accuracy): Aproximadamente 0.6767 (67.67%).
+
+Relatório de Classificação:
+
+          precision    recall  f1-score   support
+
+       0       0.69      0.66      0.67     38088
+       1       0.66      0.70      0.68     36720
+
+accuracy                           0.68     74808
+macro avg       0.68      0.68      0.68     74808
+weighted avg       0.68      0.68      0.68     74808
+```
+
+Matriz de Confusão:
+
+[[25013 13075]
+ [11109 25611]]
+Interpretação
+A acurácia de ~67.7% indica que o modelo classifica corretamente se um aluno irá evadir ou não em mais de dois terços dos casos. As métricas de precisão e recall para ambas as classes (0: Não Evasão, 1: Evasão) são balanceadas, sugerindo que o modelo tem um desempenho razoável na identificação tanto de alunos que evadem quanto dos que não evadem. Isso o torna um ponto de partida promissor para intervenções.
+
+Conceito de Agente ADK
+A função predict_evasion_status no agente_evasao.py serve como a "ferramenta" central que um agente construído com o Google Agent Development Kit (ADK) utilizaria. Dentro de um framework ADK, esta função seria exposta e o agente, baseado em suas instruções ou no contexto de uma conversa, decidiria quando chamar essa ferramenta para obter uma previsão de evasão.
+
+Por exemplo, um agente ADK poderia:
+
+Receber uma pergunta: "Qual o risco de evasão do aluno João Silva com carga horária X, tipo de curso Y, etc.?"
+
+Extrair as informações relevantes da pergunta.
+
+Chamar a ferramenta predict_evasion_status (passando os dados do aluno como argumentos).
+
+Receber a resposta ("Alto risco de evasão.").
+
+Formular uma resposta amigável para o usuário.
+
+Esta abordagem modular permite que o modelo de ML seja facilmente integrado a sistemas de agentes mais complexos e inteligentes, aproveitando a flexibilidade do ADK para orquestrar diversas ferramentas e capacidades de IA.
