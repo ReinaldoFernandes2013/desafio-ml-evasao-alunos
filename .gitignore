@@ -14,8 +14,8 @@ venv/
 env_desafio/  # A pasta específica do seu ambiente virtual
 
 # Modelos e Encoders Salvos (Opcional - remova a # se quiser ignorá-los)
-# modelo_evasao.joblib
-# onehot_encoder.joblib
+modelo_evasao.joblib
+onehot_encoder.joblib
 
 # Logs
 *.log
